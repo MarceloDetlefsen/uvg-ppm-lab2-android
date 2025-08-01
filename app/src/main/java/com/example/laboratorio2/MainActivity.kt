@@ -27,6 +27,7 @@ class MainActivity : ComponentActivity() {
             Laboratorio2Theme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
                     Greeting(
+                        name = "Android",
                         modifier = Modifier.padding(innerPadding)
                     )
                 }
@@ -36,10 +37,11 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun Greeting(modifier: Modifier = Modifier) {
+fun Greeting(name: String, modifier: Modifier = Modifier) {
+    // Estado para el color de fondo
     var backgroundColor by remember { mutableStateOf(Color.White) }
 
-    // Centrado de contenido
+    // Contenedor principal
     Column(
         modifier = modifier
             .fillMaxSize()
@@ -83,6 +85,6 @@ fun Greeting(modifier: Modifier = Modifier) {
 @Composable
 fun GreetingPreview() {
     Laboratorio2Theme {
-        Greeting()
+        Greeting("Android")
     }
 }
