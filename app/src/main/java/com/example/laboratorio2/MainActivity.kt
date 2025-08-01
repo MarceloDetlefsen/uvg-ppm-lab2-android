@@ -18,6 +18,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.laboratorio2.ui.theme.Laboratorio2Theme
 import kotlin.random.Random
+import android.widget.Toast
+import androidx.compose.ui.platform.LocalContext
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -40,6 +42,7 @@ class MainActivity : ComponentActivity() {
 fun Greeting(name: String, modifier: Modifier = Modifier) {
     // Estado para el color de fondo
     var backgroundColor by remember { mutableStateOf(Color.White) }
+    val context = LocalContext.current
 
     // Contenedor principal
     Column(
@@ -77,6 +80,15 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
             )
         }) {
             Text("Prueba a ver que hago")
+        }
+
+        Spacer(modifier = Modifier.height(10.dp))
+
+        // 4. Botón que imprime el texto solicitado
+        Button(onClick = {
+            Toast.makeText(context, "Este botón tira el mensaje que se pidió", Toast.LENGTH_SHORT).show()
+        }) {
+            Text("Yo soy el solicitado")
         }
     }
 }
